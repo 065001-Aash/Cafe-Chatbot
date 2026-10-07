@@ -1,0 +1,167 @@
+{
+  "cafe": {
+    "name": "Brew & Bite Café",
+    "bot_name": "Brew Assistant",
+    "tagline": "Specialty coffee, mocktails and comfort food",
+    "location": "Sector 18, Noida (demo café)",
+    "hours": "8:00 AM to 11:00 PM, all days",
+    "phone": "+91 98765 43210 (demo number)",
+    "gst_percent": 5,
+    "email": "hello@brewandbite.in (demo)",
+    "instagram": "@brewandbite (demo)",
+    "city": "Noida"
+  },
+  "sizes": {
+    "small": {
+      "name": "Small",
+      "extra": 0,
+      "short": "S"
+    },
+    "medium": {
+      "name": "Medium",
+      "extra": 40,
+      "short": "M"
+    },
+    "large": {
+      "name": "Large",
+      "extra": 70,
+      "short": "L"
+    },
+    "pizza_regular": {
+      "name": "Regular 7 inch",
+      "extra": 0,
+      "short": "7\""
+    },
+    "pizza_medium": {
+      "name": "Medium 10 inch",
+      "extra": 150,
+      "short": "10\""
+    },
+    "pizza_large": {
+      "name": "Large 12 inch",
+      "extra": 250,
+      "short": "12\""
+    }
+  },
+  "addons": {
+    "extra_shot": {
+      "name": "Extra espresso shot",
+      "price": 50
+    },
+    "oat_milk": {
+      "name": "Oat milk",
+      "price": 60
+    },
+    "almond_milk": {
+      "name": "Almond milk",
+      "price": 60
+    },
+    "sugar_free": {
+      "name": "Sugar free",
+      "price": 0
+    },
+    "less_sugar": {
+      "name": "Less sugar",
+      "price": 0
+    },
+    "whipped_cream": {
+      "name": "Whipped cream",
+      "price": 30
+    },
+    "vanilla_syrup": {
+      "name": "Vanilla syrup",
+      "price": 40
+    },
+    "hazelnut_syrup": {
+      "name": "Hazelnut syrup",
+      "price": 40
+    },
+    "caramel_syrup": {
+      "name": "Caramel syrup",
+      "price": 40
+    },
+    "ice_cream": {
+      "name": "Scoop of vanilla ice cream",
+      "price": 50
+    },
+    "extra_cheese": {
+      "name": "Extra cheese",
+      "price": 50
+    },
+    "cheese_burst": {
+      "name": "Cheese burst crust",
+      "price": 90
+    },
+    "jalapenos": {
+      "name": "Jalapenos",
+      "price": 30
+    },
+    "olives": {
+      "name": "Black olives",
+      "price": 30
+    },
+    "extra_patty": {
+      "name": "Extra patty",
+      "price": 70
+    },
+    "garlic_dip": {
+      "name": "Garlic mayo dip",
+      "price": 30
+    },
+    "jain": {
+      "name": "Jain (no onion, no garlic)",
+      "price": 0
+    }
+  },
+  "items": [
+    {"id": "espresso", "name": "Espresso", "category": "Hot Coffee", "price": 110, "veg": true, "available": true, "sizes": [], "addons": ["extra_shot", "sugar_free"], "prep_min": 3, "popular": false, "desc": "Single shot of our house blend"},
+    {"id": "americano", "name": "Americano", "category": "Hot Coffee", "price": 140, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "sugar_free", "less_sugar"], "prep_min": 4, "popular": false, "desc": "Espresso topped with hot water"},
+    {"id": "cappuccino", "name": "Cappuccino", "category": "Hot Coffee", "price": 170, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "oat_milk", "almond_milk", "vanilla_syrup", "hazelnut_syrup", "caramel_syrup", "sugar_free", "less_sugar"], "prep_min": 5, "popular": true, "desc": "Espresso with steamed milk and thick foam"},
+    {"id": "cafe_latte", "name": "Café Latte", "category": "Hot Coffee", "price": 180, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "oat_milk", "almond_milk", "vanilla_syrup", "hazelnut_syrup", "caramel_syrup", "sugar_free", "less_sugar"], "prep_min": 5, "popular": false, "desc": "Espresso with silky steamed milk"},
+    {"id": "cafe_mocha", "name": "Café Mocha", "category": "Hot Coffee", "price": 200, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "oat_milk", "almond_milk", "vanilla_syrup", "hazelnut_syrup", "caramel_syrup", "sugar_free", "less_sugar", "whipped_cream"], "prep_min": 6, "popular": false, "desc": "Espresso, chocolate and steamed milk"},
+    {"id": "flat_white", "name": "Flat White", "category": "Hot Coffee", "price": 190, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "oat_milk", "almond_milk", "sugar_free"], "prep_min": 5, "popular": false, "desc": "Double ristretto with velvety milk"},
+    {"id": "caramel_macchiato", "name": "Caramel Macchiato", "category": "Hot Coffee", "price": 220, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "oat_milk", "almond_milk", "sugar_free"], "prep_min": 6, "popular": true, "desc": "Vanilla milk, espresso and caramel drizzle"},
+    {"id": "hot_chocolate", "name": "Hot Chocolate", "category": "Hot Coffee", "price": 190, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["oat_milk", "almond_milk", "whipped_cream", "less_sugar"], "prep_min": 5, "popular": false, "desc": "Rich Belgian cocoa with milk"},
+    {"id": "iced_americano", "name": "Iced Americano", "category": "Iced Coffee & Frappes", "price": 160, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "vanilla_syrup", "hazelnut_syrup", "sugar_free"], "prep_min": 4, "popular": false, "desc": "Espresso over ice and chilled water"},
+    {"id": "iced_latte", "name": "Iced Latte", "category": "Iced Coffee & Frappes", "price": 190, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "oat_milk", "almond_milk", "vanilla_syrup", "hazelnut_syrup", "caramel_syrup", "sugar_free", "less_sugar"], "prep_min": 5, "popular": false, "desc": "Espresso with cold milk over ice"},
+    {"id": "iced_mocha", "name": "Iced Mocha", "category": "Iced Coffee & Frappes", "price": 210, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "oat_milk", "almond_milk", "vanilla_syrup", "hazelnut_syrup", "caramel_syrup", "sugar_free", "less_sugar", "whipped_cream"], "prep_min": 5, "popular": false, "desc": "Espresso, chocolate and cold milk over ice"},
+    {"id": "cold_brew", "name": "Cold Brew", "category": "Iced Coffee & Frappes", "price": 200, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["vanilla_syrup", "hazelnut_syrup", "caramel_syrup", "oat_milk"], "prep_min": 3, "popular": false, "desc": "Coffee steeped cold for 16 hours"},
+    {"id": "cold_coffee", "name": "Classic Cold Coffee", "category": "Iced Coffee & Frappes", "price": 180, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "ice_cream", "sugar_free", "less_sugar"], "prep_min": 5, "popular": true, "desc": "Blended coffee, milk and ice"},
+    {"id": "caramel_frappe", "name": "Caramel Frappe", "category": "Iced Coffee & Frappes", "price": 230, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "whipped_cream", "oat_milk"], "prep_min": 6, "popular": false, "desc": "Blended coffee with caramel and cream"},
+    {"id": "java_chip_frappe", "name": "Java Chip Frappe", "category": "Iced Coffee & Frappes", "price": 240, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["extra_shot", "whipped_cream"], "prep_min": 6, "popular": false, "desc": "Coffee, chocolate chips and cream, blended"},
+    {"id": "masala_chai", "name": "Masala Chai", "category": "Tea", "price": 90, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["less_sugar", "sugar_free", "oat_milk"], "prep_min": 5, "popular": true, "desc": "Milk tea with ginger, cardamom and spices"},
+    {"id": "ginger_lemon_honey", "name": "Ginger Lemon Honey Tea", "category": "Tea", "price": 120, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["sugar_free"], "prep_min": 4, "popular": false, "desc": "Soothing herbal infusion"},
+    {"id": "green_tea", "name": "Green Tea", "category": "Tea", "price": 100, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["sugar_free"], "prep_min": 3, "popular": false, "desc": "Light Darjeeling green tea"},
+    {"id": "kashmiri_kahwa", "name": "Kashmiri Kahwa", "category": "Tea", "price": 140, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["sugar_free"], "prep_min": 5, "popular": false, "desc": "Green tea with saffron, almonds and cardamom"},
+    {"id": "iced_peach_tea", "name": "Iced Peach Tea", "category": "Tea", "price": 170, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["less_sugar", "sugar_free"], "prep_min": 4, "popular": false, "desc": "Black tea with peach, served over ice"},
+    {"id": "virgin_mojito", "name": "Virgin Mojito", "category": "Mocktails & Shakes", "price": 180, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["less_sugar"], "prep_min": 4, "popular": true, "desc": "Lime, mint and soda"},
+    {"id": "blue_lagoon", "name": "Blue Lagoon", "category": "Mocktails & Shakes", "price": 190, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["less_sugar"], "prep_min": 4, "popular": false, "desc": "Blue curacao syrup, lemon and soda"},
+    {"id": "watermelon_cooler", "name": "Watermelon Cooler", "category": "Mocktails & Shakes", "price": 190, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["less_sugar"], "prep_min": 4, "popular": false, "desc": "Fresh watermelon, mint and lime"},
+    {"id": "mango_mint_cooler", "name": "Mango Mint Cooler", "category": "Mocktails & Shakes", "price": 200, "veg": true, "available": false, "sizes": ["small", "medium", "large"], "addons": ["less_sugar"], "prep_min": 4, "popular": false, "desc": "Alphonso mango with mint and soda"},
+    {"id": "oreo_shake", "name": "Oreo Shake", "category": "Mocktails & Shakes", "price": 220, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["ice_cream", "whipped_cream"], "prep_min": 5, "popular": false, "desc": "Thick shake with Oreo cookies"},
+    {"id": "strawberry_shake", "name": "Strawberry Shake", "category": "Mocktails & Shakes", "price": 210, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["ice_cream", "whipped_cream"], "prep_min": 5, "popular": false, "desc": "Fresh strawberry and vanilla ice cream"},
+    {"id": "chocolate_shake", "name": "Chocolate Shake", "category": "Mocktails & Shakes", "price": 210, "veg": true, "available": true, "sizes": ["small", "medium", "large"], "addons": ["ice_cream", "whipped_cream"], "prep_min": 5, "popular": false, "desc": "Belgian chocolate and ice cream"},
+    {"id": "margherita", "name": "Margherita Pizza", "category": "Pizzas", "price": 299, "veg": true, "available": true, "sizes": ["pizza_regular", "pizza_medium", "pizza_large"], "addons": ["extra_cheese", "cheese_burst", "jalapenos", "olives", "jain"], "prep_min": 15, "popular": true, "desc": "Tomato sauce, mozzarella and basil"},
+    {"id": "farmhouse", "name": "Farmhouse Pizza", "category": "Pizzas", "price": 379, "veg": true, "available": true, "sizes": ["pizza_regular", "pizza_medium", "pizza_large"], "addons": ["extra_cheese", "cheese_burst", "jalapenos", "olives"], "prep_min": 15, "popular": false, "desc": "Capsicum, onion, mushroom and sweet corn"},
+    {"id": "paneer_tikka_pizza", "name": "Paneer Tikka Pizza", "category": "Pizzas", "price": 399, "veg": true, "available": true, "sizes": ["pizza_regular", "pizza_medium", "pizza_large"], "addons": ["extra_cheese", "cheese_burst", "jalapenos"], "prep_min": 15, "popular": false, "desc": "Tandoori paneer, onion and capsicum"},
+    {"id": "pepperoni_pizza", "name": "Chicken Pepperoni Pizza", "category": "Pizzas", "price": 449, "veg": false, "available": true, "sizes": ["pizza_regular", "pizza_medium", "pizza_large"], "addons": ["extra_cheese", "cheese_burst", "jalapenos", "olives"], "prep_min": 15, "popular": false, "desc": "Chicken pepperoni and mozzarella"},
+    {"id": "bbq_chicken_pizza", "name": "BBQ Chicken Pizza", "category": "Pizzas", "price": 469, "veg": false, "available": true, "sizes": ["pizza_regular", "pizza_medium", "pizza_large"], "addons": ["extra_cheese", "cheese_burst", "jalapenos"], "prep_min": 16, "popular": false, "desc": "Smoky BBQ chicken, onion and peppers"},
+    {"id": "veg_burger", "name": "Classic Veg Burger", "category": "Burgers & Sandwiches", "price": 199, "veg": true, "available": true, "sizes": [], "addons": ["extra_cheese", "extra_patty", "jain"], "prep_min": 10, "popular": false, "desc": "Crispy veg patty, lettuce and mayo"},
+    {"id": "chicken_burger", "name": "Crispy Chicken Burger", "category": "Burgers & Sandwiches", "price": 249, "veg": false, "available": true, "sizes": [], "addons": ["extra_cheese", "extra_patty", "jalapenos"], "prep_min": 12, "popular": true, "desc": "Fried chicken fillet with spicy mayo"},
+    {"id": "grilled_veg_sandwich", "name": "Grilled Veg Sandwich", "category": "Burgers & Sandwiches", "price": 179, "veg": true, "available": true, "sizes": [], "addons": ["extra_cheese", "jain"], "prep_min": 8, "popular": false, "desc": "Grilled veggies, cheese and pesto"},
+    {"id": "chicken_club", "name": "Chicken Club Sandwich", "category": "Burgers & Sandwiches", "price": 259, "veg": false, "available": true, "sizes": [], "addons": ["extra_cheese"], "prep_min": 10, "popular": false, "desc": "Grilled chicken, egg, lettuce and tomato"},
+    {"id": "paneer_wrap", "name": "Paneer Tikka Wrap", "category": "Burgers & Sandwiches", "price": 229, "veg": true, "available": true, "sizes": [], "addons": ["extra_cheese", "jain"], "prep_min": 10, "popular": false, "desc": "Tandoori paneer and veggies in a wrap"},
+    {"id": "penne_arrabbiata", "name": "Penne Arrabbiata", "category": "Pasta & Sides", "price": 279, "veg": true, "available": true, "sizes": [], "addons": ["extra_cheese", "olives", "jalapenos"], "prep_min": 12, "popular": false, "desc": "Penne in spicy tomato sauce"},
+    {"id": "alfredo_pasta", "name": "Veg Alfredo Pasta", "category": "Pasta & Sides", "price": 299, "veg": true, "available": true, "sizes": [], "addons": ["extra_cheese", "olives"], "prep_min": 12, "popular": false, "desc": "Creamy white sauce with mushrooms"},
+    {"id": "chicken_alfredo", "name": "Chicken Alfredo Pasta", "category": "Pasta & Sides", "price": 349, "veg": false, "available": true, "sizes": [], "addons": ["extra_cheese"], "prep_min": 13, "popular": false, "desc": "Creamy white sauce with grilled chicken"},
+    {"id": "peri_peri_fries", "name": "Peri Peri Fries", "category": "Pasta & Sides", "price": 159, "veg": true, "available": true, "sizes": [], "addons": ["extra_cheese", "garlic_dip"], "prep_min": 7, "popular": true, "desc": "Crispy fries with peri peri seasoning"},
+    {"id": "garlic_bread", "name": "Cheesy Garlic Bread", "category": "Pasta & Sides", "price": 169, "veg": true, "available": true, "sizes": [], "addons": ["extra_cheese", "jalapenos"], "prep_min": 8, "popular": false, "desc": "Toasted bread with garlic butter and cheese"},
+    {"id": "chicken_wings", "name": "Spicy Chicken Wings (6 pcs)", "category": "Pasta & Sides", "price": 299, "veg": false, "available": true, "sizes": [], "addons": ["garlic_dip"], "prep_min": 14, "popular": false, "desc": "Tossed in hot sauce, with dip"},
+    {"id": "brownie", "name": "Chocolate Brownie", "category": "Desserts", "price": 149, "veg": true, "available": true, "sizes": [], "addons": ["ice_cream"], "prep_min": 3, "popular": true, "desc": "Warm fudgy brownie"},
+    {"id": "cheesecake", "name": "Blueberry Cheesecake", "category": "Desserts", "price": 229, "veg": true, "available": true, "sizes": [], "addons": [], "prep_min": 2, "popular": false, "desc": "Baked cheesecake with blueberry compote"},
+    {"id": "tiramisu", "name": "Tiramisu", "category": "Desserts", "price": 249, "veg": true, "available": true, "sizes": [], "addons": [], "prep_min": 2, "popular": false, "desc": "Coffee soaked sponge with mascarpone"},
+    {"id": "lava_cake", "name": "Choco Lava Cake", "category": "Desserts", "price": 169, "veg": true, "available": true, "sizes": [], "addons": ["ice_cream"], "prep_min": 8, "popular": false, "desc": "Molten chocolate centre"},
+    {"id": "waffle", "name": "Belgian Waffle", "category": "Desserts", "price": 199, "veg": true, "available": true, "sizes": [], "addons": ["ice_cream", "whipped_cream"], "prep_min": 8, "popular": false, "desc": "With maple syrup and chocolate sauce"},
+    {"id": "cookie", "name": "Choco Chip Cookie", "category": "Desserts", "price": 79, "veg": true, "available": true, "sizes": [], "addons": [], "prep_min": 1, "popular": false, "desc": "Freshly baked, chewy centre"}
+  ]
+}
