@@ -3,12 +3,12 @@
     "name": "Brew & Bite Café",
     "bot_name": "Brew Assistant",
     "tagline": "Specialty coffee, mocktails and comfort food",
-    "location": "Sector 18, Noida (demo café)",
+    "location": "Sector 18, Noida",
     "hours": "8:00 AM to 11:00 PM, all days",
-    "phone": "+91 98765 43210 (demo number)",
+    "phone": "+91 98765 43210",
     "gst_percent": 5,
-    "email": "hello@brewandbite.in (demo)",
-    "instagram": "@brewandbite (demo)",
+    "email": "hello@brewandbite.in",
+    "instagram": "@brewandbite",
     "city": "Noida"
   },
   "sizes": {
