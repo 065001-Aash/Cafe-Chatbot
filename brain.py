@@ -357,6 +357,21 @@ class GeminiWaiter:
             response_mime_type="application/json",
             temperature=0.2,   # low temperature = more consistent answers
         )
+        return parse_reply(self._generate(contents, config))
+
+    def transcribe(self, audio_bytes, mime_type="audio/wav"):
+        """Voice ordering: Gemini listens to the recording and writes down what the customer said."""
+        prompt = ("This is a customer speaking to a cafe ordering assistant. Write down exactly what they said. "
+                  "They may speak English, Hindi or Hinglish; write Hindi words in English letters (Hinglish). "
+                  "Return only the words spoken, nothing else. If there is no clear speech, return NO_SPEECH.")
+        contents = [types.Content(role="user", parts=[types.Part.from_bytes(data=audio_bytes, mime_type=mime_type),
+                                                      types.Part(text=prompt)])]
+        config = types.GenerateContentConfig(temperature=0)
+        text = (self._generate(contents, config) or "").strip().strip('"')
+        return "" if (not text or "NO_SPEECH" in text) else text[:MAX_MSG_CHARS]
+
+    def _generate(self, contents, config):
+        """Send a request to Gemini, trying the next model name if one fails."""
         order = self.models
         if self.working_model:
             order = [self.working_model] + [m for m in self.models if m != self.working_model]
@@ -370,7 +385,7 @@ class GeminiWaiter:
                 try:
                     response = self.client.models.generate_content(model=model, contents=contents, config=config)
                     self.working_model = model
-                    return parse_reply(response.text)
+                    return response.text
                 except Exception as e:  # model retired, busy, quota reached, network problem...
                     last_error = e
                     self.errors[model] = str(e)[:300]
@@ -384,6 +399,29 @@ class GeminiWaiter:
             if not order:
                 break
         raise ConnectionError(f"Gemini is not reachable right now. Last error: {last_error}")
+
+
+# ---------------------------------------------------------------- spoken replies
+def speech_text(reply):
+    """Clean a reply for reading aloud: no bold marks, rupee symbol spoken as 'rupees'."""
+    text = re.sub(r"[*_`#]", "", reply)
+    text = re.sub(r"₹\s?([\d,]+)", r"\1 rupees", text)
+    return text.replace("Note:", "Please note,").strip()[:600]
+
+
+def make_speech(reply):
+    """Turn the assistant's reply into an MP3 voice clip (Indian English, or Hindi if written in Hindi script)."""
+    try:
+        from io import BytesIO
+        from gtts import gTTS
+        text = speech_text(reply)
+        hindi_script = bool(re.search(r"[\u0900-\u097F]", text))
+        clip = gTTS(text=text, lang="hi" if hindi_script else "en", tld="com" if hindi_script else "co.in")
+        buf = BytesIO()
+        clip.write_to_fp(buf)
+        return buf.getvalue()
+    except Exception:
+        return None          # if voice fails, the reply is still shown as text
 
 
 # ---------------------------------------------------------------- one chat turn (shared by Colab and website)

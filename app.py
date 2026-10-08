@@ -11,7 +11,7 @@ import time
 import streamlit as st
 
 from brain import (MAX_MSG_CHARS, GeminiWaiter, apply_actions, bill, categories, get_item,
-                   load_menu, new_state, order_placed_text, place_order, process_turn)
+                   load_menu, make_speech, new_state, order_placed_text, place_order, process_turn)
 
 # Café colours for Streamlit's own buttons, inputs and background
 for key, value in {"theme.base": "light", "theme.primaryColor": "#8A4B14", "theme.backgroundColor": "#E4DFD5",
@@ -146,6 +146,8 @@ def get_waiter(api_key, model):
     return GeminiWaiter(api_key, MENU, model)
 
 
+st.session_state.setdefault("mic_n", 0)          # changes after each voice message so the recorder resets
+st.session_state.setdefault("speak_on", True)
 if "state" not in st.session_state:
     st.session_state.state = new_state()
     st.session_state.last_msg, st.session_state.last_time = None, 0.0
@@ -359,7 +361,7 @@ with chat_col:
         chat_box = st.container(height=480, border=False)
         with chat_box:
             with st.chat_message("assistant", avatar=BOT_AVATAR):
-                st.markdown(f"Hello! I'm the **{CAFE['bot_name']}** of {CAFE['name']}. Tell me what you'd like, "
+                st.markdown(f"Hello! I'm the **{CAFE['bot_name']}** of {CAFE['name']}. Type or speak what you'd like, "
                             "in English or Hindi, and I'll build your order. You can also ask for suggestions.")
             for m in S["messages"]:
                 with st.chat_message(m["role"], avatar=BOT_AVATAR if m["role"] == "assistant" else USER_AVATAR):
@@ -369,6 +371,14 @@ with chat_col:
             b1.button("What's popular?", on_click=ask, args=("What are your bestsellers?",), use_container_width=True)
             b2.button("Something cold", on_click=ask, args=("I want something cold to drink",), use_container_width=True)
             b3.button("Cappuccino + brownie", on_click=ask, args=("One medium cappuccino and a chocolate brownie please",), use_container_width=True)
+        clip = S.get("speak_clip")
+        if clip:                                         # read the latest reply aloud (plays once)
+            st.audio(clip, format="audio/mp3", autoplay=True)
+            S["speak_clip"] = None
+        v1, v2 = st.columns([3, 1.3], vertical_alignment="center")
+        voice = v1.audio_input("Speak your order (English or Hindi)", key=f"mic_{st.session_state.mic_n}",
+                               disabled=bool(S["order"]) or not API_KEY, label_visibility="collapsed")
+        v2.toggle("Speak replies", key="speak_on", help="The assistant reads its replies aloud")
         typed = st.chat_input("Type your order, e.g. 2 medium iced lattes with oat milk",
                               disabled=bool(S["order"]) or not API_KEY, max_chars=MAX_MSG_CHARS)
         st.markdown("<div class='ai-note'>The assistant is an AI (Google Gemini), not a person. Messages are sent to Google to create "
@@ -379,8 +389,21 @@ st.markdown(f"""<div class="foot"><b>{E(CAFE['name'].upper())}</b>
   <span>Sector 18, {E(CAFE['city'])} · {E(CAFE['hours'])} · {E(CAFE['phone'])}</span>
   <span>Demo website for an academic project</span></div>""", unsafe_allow_html=True)
 
-# ---------------------------------------------------------------- handle a new chat message
+# ---------------------------------------------------------------- handle a new chat or voice message
 user_msg = typed or st.session_state.pop("pending", None)
+if not user_msg and voice is not None and waiter is not None:
+    st.session_state.mic_n += 1                      # reset the recorder for the next message
+    with chat_box:
+        with st.spinner("Listening..."):
+            try:
+                heard = waiter.transcribe(voice.getvalue(), voice.type or "audio/wav")
+            except Exception:
+                heard = None
+    if heard:
+        user_msg = heard
+    else:
+        st.toast("Sorry, I couldn't hear that clearly. Please try again or type your order.")
+        st.rerun()
 if user_msg:
     now = time.time()
     duplicate = (user_msg == st.session_state.last_msg and now - st.session_state.last_time < 3)
@@ -399,4 +422,6 @@ if user_msg:
                 reply = process_turn(waiter, MENU, S, user_msg)
         if not S["messages"] or S["messages"][-1]["content"] != reply:
             st.toast(reply)                    # input warnings (empty or too long) are shown as a pop-up
+        elif st.session_state.speak_on:
+            S["speak_clip"] = make_speech(reply)
     st.rerun()
