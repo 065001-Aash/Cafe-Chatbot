@@ -4,7 +4,7 @@
 Use Case #2: Restaurant / retail order-taking assistant (Chatbot)
 Prepared by: **Aash Gupta (065001)**, PGDM (Big Data Analytics), FORE School of Management
 
-**Live website:** _add your Streamlit link here_
+**Live website:** https://brewandbite-aash.streamlit.app
 
 ---
 
@@ -19,6 +19,7 @@ A café website where customers can browse the menu and place an order by chatti
 | Veg / non-veg | Standard green and brown food marks |
 | Order summary with running total | Live bill with quantity buttons, subtotal, 5% GST and total |
 | Order confirmation flow | Name and dine-in / takeaway, review screen, confirm, order ID and ready time |
+| Voice ordering | Speak your order in English or Hindi; Gemini turns speech into text and replies are read aloud |
 | AI assistant | Google Gemini understands free-text orders, answers menu questions and asks when something is unclear |
 | Human handoff | "Talk to staff" button, and automatic handoff for allergies, complaints or repeated confusion |
 
